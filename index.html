@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>jQuery Plugin Exemplo</title>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<style>
+.highlight {
+    background-color: yellow;
+}
+</style>
+</head>
+<body>
+
+<ul>
+<li>Item 1</li>
+<li>Item 2</li>
+<li>Item 3</li>
+<li>Item 4</li>
+</ul>
+
+<script>
+// Definir o plugin jQuery
+(function($) {
+    $.fn.highlightOnHover = function() {
+    // Adicionar manipuladores de eventos para cada elemento correspondente
+    this.on('mouseenter', function() {
+        $(this).addClass('highlight');
+    }).on('mouseleave', function() {
+        $(this).removeClass('highlight');
+    });
+
+    // Permitir encadeamento
+    return this;
+    };
+})(jQuery);
+
+// Usar o plugin
+$(document).ready(function() {
+    // Chamar o plugin na lista
+    $('ul li').highlightOnHover();
+});
+</script>
+
+</body>
+</html>
